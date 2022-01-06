@@ -1,6 +1,22 @@
+//Importation
 const express = require('express');
-
+const mongoose = require('mongoose');
 const app = express();
+
+//Connection de notre API à la base de données
+mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+//Middleware général permettant à tout utilisateurs et à l'application d'utiliser l'API
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
+});
 
 app.use((req, res, next) => {
   console.log('Requête reçue !');
