@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 //importation routes
 const userRoutes = require ('./routes/user');
+const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 
@@ -28,6 +29,6 @@ app.use(express.json());
 
 //Enregistrement des routes API
 app.use('/api/auth', userRoutes);
-
+app.use('/api/sauces', sauceRoutes);
 
 module.exports = app;
