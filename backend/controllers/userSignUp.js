@@ -1,4 +1,4 @@
-const bcrypt = requite ('bcrypt');
+const bcrypt = require ('bcrypt');
 const User  = require ('../models/Users');
 
 //Middleware pour l'enregistrement de nouveau utilisateur
