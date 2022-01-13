@@ -1,18 +1,11 @@
 //Importation
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
 
 //importation routes
 const userRoutes = require ('./routes/user');
 
-
-//Connection de notre API à la base de données
-mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
+const app = express();
 
 //Middleware général permettant à tout utilisateurs et à l'application d'utiliser l'API
 app.use((req, res, next) => {
@@ -21,6 +14,13 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
+
+//Connection de notre API à la base de données
+mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 // Middleware qui intercepte les requetes qui ont un content type au format json et nous met à dispostion ce contenu, elle nous donne une accés au corps 
 //de la requête qui est req.body
