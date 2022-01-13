@@ -22,26 +22,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  console.log('Requête reçue !');
-  next();
-});
+// Middleware qui intercepte les requetes qui ont un content type au format json et nous met à dispostion ce contenu, elle nous donne une accés au corps 
+//de la requête qui est req.body
+app.use(express.json());
 
-app.use((req, res, next) => {
-  res.status(201);
-  next();
-});
-
-app.use((req, res, next) => {
-  res.json({ message: 'Votre requête a bien été reçue !' });
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
-});
-
-//Enregistrement des routes
+//Enregistrement des routes API
 app.use('/api/auth/signup', userRoutesSignUp);
 app.use('/api/auth/login', userRoutesLogin);
 
