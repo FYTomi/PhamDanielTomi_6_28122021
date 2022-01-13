@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 //importation routes
-const userRoutesSignUp = require ('./routes/user');
-const userRoutesLogin = require ('./routes/user');
+const userRoutes = require ('./routes/user');
+
 
 //Connection de notre API à la base de données
 mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 //Enregistrement des routes API
-app.use('/api/auth/signup', userRoutesSignUp);
-app.use('/api/auth/login', userRoutesLogin);
+app.use('/api/auth', userRoutes);
+
 
 module.exports = app;
