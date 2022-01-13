@@ -3,6 +3,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+//importation routes
+const userRoutesSignUp = require ('./routes/user');
+const userRoutesLogin = require ('./routes/user');
+
 //Connection de notre API à la base de données
 mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -36,5 +40,9 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   console.log('Réponse envoyée avec succès !');
 });
+
+//Enregistrement des routes
+app.use('/api/auth/signup', userRoutesSignUp);
+app.use('/api/auth/login', userRoutesLogin);
 
 module.exports = app;
