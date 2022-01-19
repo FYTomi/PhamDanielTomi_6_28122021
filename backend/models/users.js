@@ -3,7 +3,7 @@ const mongoose = require ('mongoose');
 //Ajout plugin validator unique
 const uniqueValidator = require ('mongoose-unique-validator');
 
-// unique: true pour s'assurer qu'on ne peut s'inscrire une fois avec la même adresse et mdp
+// unique: true pour s'assurer qu'on ne peut s'inscrire une fois avec la même adresse email
 const userSchema = mongoose.Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
