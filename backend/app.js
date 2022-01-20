@@ -8,6 +8,7 @@ const path = require('path');
 //importation routes
 const userRoutes = require ('./routes/user');
 const sauceRoutes = require('./routes/sauce');
+const likeRoutes = require('./routes/like');
 
 const app = express();
 
@@ -36,5 +37,6 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 //Enregistrement des routes API
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
+app.use('/api/sauces', likeRoutes);
 
 module.exports = app;
