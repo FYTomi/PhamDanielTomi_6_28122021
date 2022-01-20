@@ -1,7 +1,7 @@
 //Importation
 const express = require('express');
 const mongoose = require('mongoose');
-
+const path = require('path');
 //importation routes
 const userRoutes = require ('./routes/user');
 const sauceRoutes = require('./routes/sauce');
@@ -27,6 +27,7 @@ mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWri
 //de la requête qui est req.body
 app.use(express.json());
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 //Enregistrement des routes API
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
