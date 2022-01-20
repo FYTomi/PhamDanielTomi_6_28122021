@@ -5,6 +5,7 @@ exports.createSauce = (req, res, next) => {
     delete sauceObject._id;
     const sauce = new Sauce({
       ...sauceObject,
+      //ULR = Protocol + nom d'hôte + nom du fichier
       imageUrl:`${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     sauce.save()
@@ -32,7 +33,7 @@ exports.deleteSauce = (req, res, next)=>{
         })
       }
       Sauce.deleteOne({_id: req.params.id })
-    .then(() => res.status(200).json({message : "Sauce Supprimé"}))
+    .then(() => res.status(200).json({message : 'Sauce Supprimé'}))
     .catch(error => res.status(400).json({ error }));
     });
     

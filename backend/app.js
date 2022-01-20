@@ -1,7 +1,10 @@
 //Importation
 const express = require('express');
 const mongoose = require('mongoose');
+
+//Accéder au path de notre serveur
 const path = require('path');
+
 //importation routes
 const userRoutes = require ('./routes/user');
 const sauceRoutes = require('./routes/sauce');
@@ -27,7 +30,9 @@ mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWri
 //de la requête qui est req.body
 app.use(express.json());
 
+//Middleware qui répond aux requête envoyés vers le dossier images et s'en serve
 app.use('/images', express.static(path.join(__dirname, 'images')));
+
 //Enregistrement des routes API
 app.use('/api/auth', userRoutes);
 app.use('/api/sauces', sauceRoutes);
