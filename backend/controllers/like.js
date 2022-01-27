@@ -11,7 +11,7 @@ exports.likeStatus=(req, res)=>{
 
         switch (like) {
             
-            //L'ID del'utilisateur doit être ajouté ou retiré du tableau approprié. 
+            //L'ID de l'utilisateur doit être ajouté ou retiré du tableau approprié. 
             //Cela permet de garder une trace de leurs préférences et les empêche de liker ou de ne pas disliker la même sauce plusieurs fois
             
             //like = 1, l'utilisateur aime (= like) la sauce
@@ -40,7 +40,7 @@ exports.likeStatus=(req, res)=>{
         
         
         sauce.save()
-        .then(() => res.status(201).json({ message: 'Sauce enrigistré !' }))
+        .then(() => res.status(201).json({ message: 'Sauce enregistré !' }))
         .catch((error) => res.status(400).json({ error }))
 })
 .catch((error) => res.status(500).json({ error }))

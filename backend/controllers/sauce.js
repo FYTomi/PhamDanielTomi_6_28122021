@@ -6,7 +6,7 @@ exports.createSauce = (req, res, next) => {
     delete sauceObject._id;
     const sauce = new Sauce({
       ...sauceObject,
-      //ULR = Protocol + nom d'hôte + nom du fichier
+      //URL = Protocol + nom d'hôte + nom du fichier
       imageUrl:`${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     sauce.save()
