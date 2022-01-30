@@ -1,7 +1,7 @@
 //Importation
 const express = require('express');
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 //Accéder au path de notre serveur
 const path = require('path');
 
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 });
 
 //Connection de notre API à la base de données
-mongoose.connect('mongodb+srv://Eddie15:PopuOk5@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.MGDB_ID}:${process.env.MGDB_MDP}@p6.2digh.mongodb.net/P6?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
